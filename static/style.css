@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phishing Detection System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🎣 Phishing Detection & Awareness Platform</h1>
+
+    <form method="POST">
+        <textarea name="user_input" placeholder="Paste email content or URL here..." required></textarea>
+        <br>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if result %}
+    <div class="result {{ result }}">
+        <h2>Result: {{ result }}</h2>
+        <p>Risk Score: {{ score }}</p>
+
+        <h3>Analysis:</h3>
+        <ul>
+            {% for r in reasons %}
+            <li>{{ r }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Safety Tips:</h3>
+        <ul>
+            <li>Do not click unknown links</li>
+            <li>Verify sender identity</li>
+            <li>Never share OTP or passwords</li>
+            <li>Check website URLs carefully</li>
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
+
